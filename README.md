@@ -5,7 +5,7 @@
 <!-- PROJECT Demo/Bug/Feature links -->
 <div align="center">
   <p align="center">
-    <a href="https://github.com/ari-denary/volunteer-management-frontend">View Demo</a>
+    <!-- <a href="https://github.com/ari-denary/volunteer-management-frontend">View Demo</a> -->
     ·
     <a href="https://github.com/ari-denary/volunteer-management-frontend/issues">Report Bug</a>
     ·
