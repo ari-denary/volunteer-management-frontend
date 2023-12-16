@@ -4,7 +4,7 @@ import React from "react";
 function Login() {
     return (
         <>
-            <img src="/images/logo" alt="logo" />
+            <img src="src/images/logo.png" alt="logo" />
             <form>
                 <div className="mb-3">
                     <label
