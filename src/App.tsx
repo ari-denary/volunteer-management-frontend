@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import './App.css';
-import Login from './Login.tsx';
-import Signup from './Signup.tsx';
-import Profile from './Profile.tsx';
+import Login from './components/Login.tsx';
+import Signup from './components/Signup.tsx';
+import ProfileInformationForm from './components/ProfileInformationForm.tsx';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup/">
             <Route path="" element={<Signup />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<ProfileInformationForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
