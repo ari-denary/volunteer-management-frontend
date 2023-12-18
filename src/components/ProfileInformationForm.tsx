@@ -1,6 +1,4 @@
 
-import React from 'react'
-import InputField from './InputField'
 import ThinButton from './ThinButton'
 import { MenuItem, TextField } from '@mui/material'
 import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
