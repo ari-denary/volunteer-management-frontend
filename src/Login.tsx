@@ -5,28 +5,34 @@ function Login() {
     return (
         <>
             <img src="src/images/logo.png" alt="logo" />
+            <div>
+                <p>Manos Juntas</p>
+            </div>
+            <div>
+                <p>Volunteer Portal</p>
+            </div>
             <form>
                 <div className="mb-3">
                     <label
-                        htmlFor="exampleFormControlInput1"
+                        htmlFor="login"
                         className="form-label"
                     ></label>
                     <input
                         type="email"
                         className="form-control"
-                        id="exampleFormControlInput1"
+                        id="username"
                         placeholder="Username"
                     />
                 </div>
                 <div className="mb-3">
                     <label
-                        htmlFor="exampleFormControlInput1"
+                        htmlFor="password"
                         className="form-label"
                     ></label>
                     <input
                         type="email"
                         className="form-control"
-                        id="exampleFormControlInput1"
+                        id="password"
                         placeholder="Password"
                     />
                 </div>
