@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <ThinButton text="Login" />
+      <ThinButton text="Next"/>
     </>
   )
 }

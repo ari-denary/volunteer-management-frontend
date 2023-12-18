@@ -1,9 +1,17 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 
-const ThinButton = (text:any) => {
+
+interface props {
+	text: string;
+	onClick?: () => void;
+}
+
+const ThinButton = ({text}: props) => {
   return (
-      <Button variant="contained">{text}</Button>
+      <Button variant="contained" size="medium" sx={{width:300, backgroundColor:'#1370AF'}}>
+        {text}
+      </Button>
   )
 }
 
