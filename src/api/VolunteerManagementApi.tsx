@@ -29,14 +29,34 @@ class VolunteerManagementApi {
       console.error("API Error:", err.response);
       const message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
+      return { error: message };
     }
   }
 
-  /** signup user */
+  /** signup user 
+  {
+    "badge_number":"1",
+    "email":"sample@mail.com",
+    "password":"password",
+    "first_name":"sample",
+    "last_name":"user",
+    "dob":"datetime.datetime(2000, 1, 1, 0, 0)",
+    "gender":"Prefer not to say",
+    "address":"123 Cherry lane",
+    "city":"New York",
+    "state":"NY",
+    "zip_code":"11001",
+    "phone_number":"9991234567",
+    "is_student":"true",
+    "is_multilingual":"false"
+}
+*/
   static async signup(user) {
     console.log("VolunteerManagementApi signup", user);
-    const newUser = await axios.post(`${BASE_API_URL}/users`, user);
-    return newUser;
+    const response = await VolunteerManagementApi.request(`signup`, user, "post");
+    VolunteerManagementApi.token = response.token;
+    // TODO: save token in localStorage
+    return response;
   }
 
   /** login user */
