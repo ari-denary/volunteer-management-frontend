@@ -8,18 +8,18 @@ const ContactInformationForm = () => {
         <form>
             <div>
                 <label>Email:</label>
-                <TextField fullWidth id="email" placeholder='email' label='Email'/>
+                <TextField fullWidth id="email" placeholder='Email' label='Email'/>
             </div>
             <div>
                 <label>School Email:</label>
-                <TextField fullWidth id="email" placeholder='email' label='School Email'/>
+                <TextField fullWidth id="email" placeholder='School Email' label='School Email'/>
             </div>
             <div>
                 <label>Phone Number:</label>
-                <TextField fullWidth id="phoneNumber" placeholder='phoneNumber' label='Phone Number'/>
+                <TextField fullWidth id="phoneNumber" placeholder='Phone Number' label='Phone Number'/>
 
                 <label>Phone Carrier:</label>
-                <TextField select id="phoneCarrier" placeholder='phoneCarrier' label='Phone Carrier'>
+                <TextField select id="phoneCarrier" placeholder='Phone Carrier' label='Phone Carrier'>
                     <MenuItem>-</MenuItem>
                     <MenuItem>-</MenuItem>
                     <MenuItem>-</MenuItem>
