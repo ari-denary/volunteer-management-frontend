@@ -10,17 +10,24 @@ class VolunteerManagementApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_API_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${VolunteerManagementApi.token}` };
-    const params = (method === "get")
-      ? data
-      : {};
+    const headers = { 
+      "Authorization": `Bearer ${VolunteerManagementApi.token}`, 
+      "Content-Type": "application/json",
+    };
 
     try {
-      // return (await axios({ url, method, data, params, headers })).data;
-      return (await axios({ url, method, data, params })).data;
-    } catch (err) {
+      const response = await fetch(
+        url,
+        {
+          method: method,
+          headers: headers,
+          body: JSON.stringify(data)
+        }
+      )
+      return response.json();
+    } catch (err: any) {
       console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
+      const message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
     }
   }
