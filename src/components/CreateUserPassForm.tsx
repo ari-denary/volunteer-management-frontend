@@ -1,9 +1,19 @@
 import { useState } from "react";
 
+// INTERFACES (TYPESCRIPT):
+interface CreateUserPassFormProps {
+  handleSaveUserPass: (formData: object) => void;
+}
+
 /** CreateUserPassForm -------------------------------------------------------
  *
  * State:
- * - formData
+ * - formData:
+ *   {
+ *    username: "",
+ *    password: "",
+ *    confirmPassword: "",
+ *   }
  *
  * Props:
  * - handleSaveUserPass: function passed down from Signup to call upon form submission
@@ -15,7 +25,7 @@ import { useState } from "react";
  *   RoutesList -> Signup --> CreateUserPassForm
  *
  */
-function CreateUserPassForm(handleSaveUserPass: Function) {
+const CreateUserPassForm: React.FC<CreateUserPassFormProps> = ({ handleSaveUserPass }) => {
   console.log("CreateUserPassForm called with handleSaveUserPass = ", handleSaveUserPass);
 
   // COMPONENT STATE:
@@ -54,7 +64,10 @@ function CreateUserPassForm(handleSaveUserPass: Function) {
     console.log("CreateUserPassForm handleSubmit called with formData = ", formData);
 
     if (ensurePasswordValidation(formData.password, formData.confirmPassword)) {
-      handleSaveUserPass(formData);
+      handleSaveUserPass({ 
+        username: formData.username, 
+        password: formData.password
+      });
     }
   }
 
