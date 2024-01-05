@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CreateUserPassForm from "./CreateUserPassForm";
+import ProfileInformationForm from "./ProfileInformationForm";
 
 
 /** Signup -------------------------------------------------------
@@ -29,14 +30,15 @@ import CreateUserPassForm from "./CreateUserPassForm";
  * 
  * Functions defined
  * - handleSaveUserPass: function passed to CreateUserPassForm 
+ * - handleSaveProfile: function passed to ProfileInformationForm
  * 
  * Routed at:
  *   /signup
  *
  * Call list:
- *   RoutesList -> Signup --> CreateUserPassForm
- *                        --> 
+ *   RoutesList -> Signup --> CreateUserPassForm --> ProfileInformationForm
  */
+
 function Signup() {
 
   // COMPONENT STATE:
@@ -69,6 +71,15 @@ function Signup() {
     }));
   }
 
+  function handleSaveProfile(formData: object) {
+    console.log("handleSaveProfile called with formData = ", formData);
+
+    setSignupData((signupData) => ({
+      ...signupData,
+      ...formData,
+    }));
+  }
+
   /**  CONDITIONAL RENDERING:
    *   - If no username in state, render CreateUserPassForm to user 
    *     (shows create username and password form)
@@ -79,6 +90,8 @@ function Signup() {
           {
             signupData.username === null  
             ? <CreateUserPassForm handleSaveUserPass={handleSaveUserPass} /> 
+            : signupData.first_name === null 
+            ? <ProfileInformationForm handleSaveProfile={handleSaveProfile} />
             : null
           }
 
