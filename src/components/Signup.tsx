@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CreateUserPassForm from "./CreateUserPassForm";
 import ProfileInformationForm from "./ProfileInformationForm";
+import ContactInformationForm from "./ContactInformationForm";
 
 
 /** Signup -------------------------------------------------------
@@ -11,16 +12,20 @@ import ProfileInformationForm from "./ProfileInformationForm";
  * 	   "username": "TestUser",
  *     "password": "password", 
  *     "badge_number": 1,
- *     "email": "sample@mail.com",
+ *     "email": "sample@email.com",
+ *     "school_email": "sample@email.com",
  *     "first_name": "sample",
  *     "last_name": "user",
  *     "dob": "datetime.datetime(2000, 1, 1, 0, 0)",
  *     "gender": "Prefer not to say",
+ *     "race": null,
+ *     "ethnicity": null,
  *     "address": "123 Cherry lane",
  *     "city": "New York",
  *     "state": "NY",
  *     "zip_code": "11001",
  *     "phone_number": "9991234567",
+ *     "phone_carrier": "AT&T",
  *     "is_student": true,
  *     "is_multilingual": false
  *    }
@@ -47,32 +52,28 @@ function Signup() {
     password: null,
     badge_number: null,
     email: null,
+    school_email: null,
     first_name: null,
     last_name: null,
     dob: null,
     gender: null,
+    race: null,
+    ethnicity: null,
     address: null,
     city: null,
     state: null,
     zip_code: null,
     phone_number: null,
+    phone_carrier: null,
     is_student: null,
-    is_multilingual: null
+    is_multilingual: null,
+    language: null,
+    other_languages: null,
   });
 
   // FUNCTION DEFINITIONS FOR PROPS:
-
   function handleSaveUserPass(formData: object) {
     console.log("handleSaveUserPass called with formData = ", formData);
-
-    setSignupData((signupData) => ({
-      ...signupData,
-      ...formData,
-    }));
-  }
-
-  function handleSaveProfile(formData: object) {
-    console.log("handleSaveProfile called with formData = ", formData);
 
     setSignupData((signupData) => ({
       ...signupData,
@@ -91,7 +92,9 @@ function Signup() {
             signupData.username === null  
             ? <CreateUserPassForm handleSaveUserPass={handleSaveUserPass} /> 
             : signupData.first_name === null 
-            ? <ProfileInformationForm handleSaveProfile={handleSaveProfile} />
+            ? <ProfileInformationForm handleSaveData={handleSaveUserPass} />
+            : signupData.address === null 
+            ? <ContactInformationForm handleSaveData={handleSaveUserPass}/>
             : null
           }
 

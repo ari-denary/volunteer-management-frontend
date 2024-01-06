@@ -1,12 +1,17 @@
 
-import { MenuItem, TextField } from '@mui/material'
+import { FormControl, InputLabel, MenuItem, TextField } from '@mui/material'
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from "react";
 
 // INTERFACES (TYPESCRIPT):
 interface CreateProfileInformationProps {
-    handleSaveProfile: (formData: object) => void;
+    handleSaveData: (formData: object) => void;
   }
+
+// ARRAY OF PRONOUNS, RACES
+const pronouns = ["She/her/her", "He/him/his", "They/them/their", "Ze/Zir/Zem"]
+const races = ["White", "Black", "Asian", "Hispanic"]
+
 
 /** ProfileInformationForm -------------------------------------------------------
  *
@@ -16,21 +21,24 @@ interface CreateProfileInformationProps {
  *    first_name: "",
  *    last_name: "",
  *    gender: "",
- *    dob: ""
+ *    pronouns: "",
+ *    dob: "",
+ *    race: "",
+ *    ethnicity: "",
  *   }
  *
  * Props:
- * - handleSaveProfile: function passed down from Signup to call upon form submission
+ * - handleSaveData: function passed down from Signup to call upon form submission
  * 
  * Routed at:
- *   /signup/profile
+ *   /signup
  *
  * Call list:
  *   RoutesList -> Signup --> CreateUserPassForm --> ProfileInformationForm
  *
  */
-const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handleSaveProfile }) => {
-    console.log("CreateUserPassForm called with handleSaveProfile = ", handleSaveProfile);
+const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handleSaveData }) => {
+    console.log("CreateUserPassForm called with handleSaveData = ", handleSaveData);
 
     // COMPONENT STATE:
     const [formData, setFormData] = useState({
@@ -38,9 +46,15 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
         last_name: "",
         dob: "",
         gender: "",
+        pronouns: "",
+        race: "",
+        ethnicity: "",
+        language: "",
+        is_multilingual:"",
+        other_languages: ""
         });
-
-    // HANDLE CHANGE FUNCTION:
+    
+    // HANDLE CHANGE FUNCTIONS:
     function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
         const name = evt.target.id
         const value = evt.target.value;
@@ -49,7 +63,7 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
           [name]: value,
         }));
       }
-
+    
     const handleSelectChange = (evt: SelectChangeEvent<typeof formData>) => {
         const name = evt.target.name
         const value = evt.target.value;
@@ -66,13 +80,12 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
         evt.preventDefault();
         console.log("CreateUserPassForm handleSubmit called with formData = ", formData);
 
-        handleSaveProfile({ 
+        handleSaveData({ 
             first_name: formData.first_name,
             last_name: formData.last_name,
             dob: formData.dob,
             gender: formData.gender,
         });
-            
     }
 
     return (
@@ -113,10 +126,13 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
                     placeholder='pronouns' 
                     label='Pronouns'
                     value=""
+                    onChange={handleSelectChange}
                 >
-                    <MenuItem value="she/her">She/Her</MenuItem>
-                    <MenuItem value="he/him">He/Him</MenuItem>
-                    <MenuItem value="they/them">They/Them</MenuItem>
+                    { pronouns.map(pronoun => {
+                        return(
+                            <MenuItem value={pronoun}>{pronoun}</MenuItem> 
+                        )
+                    })}
                 </Select>
             </div>
             <div>
@@ -129,17 +145,23 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
                 </input>
             </div>
             <label>Race and Ethnicity:</label>
-                <TextField 
-                    fullWidth 
-                    select 
-                    id="race" 
-                    placeholder='Race' 
-                    label='Race'
-                >
-                    <MenuItem>-</MenuItem>
-                    <MenuItem>-</MenuItem>
-                    <MenuItem>-</MenuItem>
-                </TextField>
+                <FormControl>
+                    <InputLabel>Race</InputLabel>
+                    <Select 
+                        fullWidth
+                        name="race" 
+                        placeholder='Race' 
+                        label='Race'
+                        value=""
+                        onChange={handleSelectChange}
+                    >
+                        { races.map(race => {
+                            return(
+                                <MenuItem value={race}>{race}</MenuItem> 
+                            )
+                        })}
+                    </Select>
+                </FormControl>
                 <TextField 
                     fullWidth 
                     select 
