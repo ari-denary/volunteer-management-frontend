@@ -75,7 +75,7 @@ function Signup() {
   // FUNCTION DEFINITIONS FOR PROPS:
   function handleSaveUserPass(formData: object) {
     console.log("handleSaveUserPass called with formData = ", formData);
-
+    console.log("SIGN UP DATA", signupData)
     setSignupData((signupData) => ({
       ...signupData,
       ...formData,
@@ -96,7 +96,7 @@ function Signup() {
             ? <ProfileInformationForm handleSaveData={handleSaveUserPass} />
             : signupData.volunteer_type === null
             ? <VolunteerTypeForm handleSaveData={handleSaveUserPass}/> 
-            : signupData.address === null 
+            : signupData.volunteer_type === "General" 
             ? <ContactInformationForm handleSaveData={handleSaveUserPass}/>
             : null
           }

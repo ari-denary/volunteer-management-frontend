@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 
 // TYPESCRIPT INTERFACE
 interface VolunteerTypeProps {
@@ -17,7 +17,7 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
     // HANDLE SUBMIT FUNCTION:
     function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
         evt.preventDefault();
-        console.log("CreateUserPassForm handleSubmit called with formData = ", formData);
+        console.log("VolunteerTypeForm handleSubmit called with formData = ", formData);
 
         handleSaveData({ 
             volunteer_type: formData.volunteer_type,
@@ -30,6 +30,7 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
             <form onSubmit={handleSubmit}>
                 <div className='buttonContainer'>
                     <Button 
+                        type="submit"
                         variant="contained" 
                         onClick={() => setFormData({volunteer_type: "Student"})}
                     > 
@@ -38,18 +39,20 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
                 </div>
                 <div className='buttonContainer'>
                     <Button 
-                            variant="contained" 
-                            onClick={() => setFormData({volunteer_type: "Healthcare Provider"})}
-                        > 
-                            Healthcare Provider
-                        </Button>
+                        type="submit"
+                        variant="contained" 
+                        onClick={() => setFormData({volunteer_type: "Healthcare Provider"})}
+                    > 
+                        Healthcare Provider
+                    </Button>
                 </div>
                 <div className='buttonContainer'>
                     <Button 
-                            variant="contained" 
-                            onClick={() => setFormData({volunteer_type: "General"})}
-                        > 
-                            General
+                        type="submit"
+                        variant="contained" 
+                        onClick={() => setFormData({volunteer_type: "General"})}
+                    > 
+                        General
                     </Button>
                 </div>
 
