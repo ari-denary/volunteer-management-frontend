@@ -48,7 +48,7 @@ const ContactInformationForm: React.FC<ContactInformationProps> = ({ handleSaveD
         phone_carrier: ""
         });
 
-    // HANDLE CHANGE FUNCTION:
+    // HANDLE CHANGE FUNCTIONS:
     function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
         const name = evt.target.id
         const value = evt.target.value;

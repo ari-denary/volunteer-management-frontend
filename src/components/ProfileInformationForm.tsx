@@ -178,7 +178,7 @@ const ProfileInformationForm: React.FC<CreateProfileInformationProps> = ({ handl
                 <TextField 
                     fullWidth 
                     select 
-                    id="primaryLanguage" 
+                    id="language" 
                     placeholder='Primary Language' 
                     label='Primary Language'
                 >

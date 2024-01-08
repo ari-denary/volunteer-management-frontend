@@ -2,6 +2,7 @@ import { useState } from "react";
 import CreateUserPassForm from "./CreateUserPassForm";
 import ProfileInformationForm from "./ProfileInformationForm";
 import ContactInformationForm from "./ContactInformationForm";
+import VolunteerTypeForm from "./VolunteerTypeForm";
 
 
 /** Signup -------------------------------------------------------
@@ -26,7 +27,7 @@ import ContactInformationForm from "./ContactInformationForm";
  *     "zip_code": "11001",
  *     "phone_number": "9991234567",
  *     "phone_carrier": "AT&T",
- *     "is_student": true,
+ *     "volunteer_type": true,
  *     "is_multilingual": false
  *    }
  *
@@ -65,7 +66,7 @@ function Signup() {
     zip_code: null,
     phone_number: null,
     phone_carrier: null,
-    is_student: null,
+    volunteer_type: null,
     is_multilingual: null,
     language: null,
     other_languages: null,
@@ -93,6 +94,8 @@ function Signup() {
             ? <CreateUserPassForm handleSaveUserPass={handleSaveUserPass} /> 
             : signupData.first_name === null 
             ? <ProfileInformationForm handleSaveData={handleSaveUserPass} />
+            : signupData.volunteer_type === null
+            ? <VolunteerTypeForm handleSaveData={handleSaveUserPass}/> 
             : signupData.address === null 
             ? <ContactInformationForm handleSaveData={handleSaveUserPass}/>
             : null
