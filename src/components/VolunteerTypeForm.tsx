@@ -5,7 +5,24 @@ import { useState } from "react";
 interface VolunteerTypeProps {
     handleSaveData: (formData: object) => void;
   }
-
+/** VolunteerTypeForm -------------------------------------------------------
+ *
+ * State:
+ * - formData:
+ *   {
+ *    volunteer_type: ""
+ *   }
+ *
+ * Props:
+ * - handleSaveData: function passed down from Signup to call upon form submission
+ * 
+ * Routed at:
+ *   /signup
+ *
+ * Call list:
+ *   RoutesList -> Signup --> CreateUserPassForm --> ProfileInformationForm --> VolunteerTypeForm
+ *
+ */
 const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => {
     // COMPONENT STATE:
     const [formData, setFormData] = useState({

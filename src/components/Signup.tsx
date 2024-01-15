@@ -27,7 +27,7 @@ import VolunteerTypeForm from "./VolunteerTypeForm";
  *     "zip_code": "11001",
  *     "phone_number": "9991234567",
  *     "phone_carrier": "AT&T",
- *     "volunteer_type": true,
+ *     "volunteer_type": "Student",
  *     "is_multilingual": false
  *    }
  *
