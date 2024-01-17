@@ -89,9 +89,7 @@ const VolunteerTypeForm: React.FC<VolunteerInfoProps> = ({ handleSaveData }) => 
                 </div>
 
             </form>
-            <div>
-                    <button id="next" type="submit">Next</button>
-                </div>
+            
 
         </>
     )

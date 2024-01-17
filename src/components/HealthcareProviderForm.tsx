@@ -1,5 +1,6 @@
 import { MenuItem, TextField } from '@mui/material';
 import ThinButton from './ThinButton';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
@@ -41,6 +42,9 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
 
       console.log("HealthcareProviderForm formData = ", formData);
 
+      //HANDLE NAVIGATE ROUTE:
+      const navigate = useNavigate();
+
       //HANDLE SUBMIT FUNCTION:
       function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
         evt.preventDefault();
@@ -50,7 +54,9 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
             type_of_provider: formData.type_of_provider,
             employer: formData.employer,
             degree: formData.degree
-        })
+        });
+        navigate('../contactinfoform')
+
       }
 
   return (
@@ -58,8 +64,8 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
         <h1>Healthcare Provider Information</h1>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Type of Provider</label>
-                <Select name="providers" fullWidth id="typeOfProvider" placeholder='Physician, Nurse, etc' label='Physician, Nurse, etc' onChange={handleSelectChange} value={undefined}>
+                <label htmlFor='typeOfProvider'>Type of Provider</label>
+                <Select name="type_of_provider" fullWidth id="typeOfProvider" placeholder='Physician, Nurse, etc' label='Physician, Nurse, etc' onChange={handleSelectChange} value={undefined}>
 
                     {providers.map(provider=>{
                         return(
@@ -83,7 +89,7 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
             </div>
             <div>
                 <label>Degree</label>
-                <Select fullWidth id="Degree" placeholder='Degree (BS, BA, MD, DO, MPH, etc)' label='Degree (BS, BA, MD, DO, MPH, etc)' onChange={handleSelectChange} value={undefined}>
+                <Select name="degree" fullWidth id="Degree" placeholder='Degree (BS, BA, MD, DO, MPH, etc)' label='Degree (BS, BA, MD, DO, MPH, etc)' onChange={handleSelectChange} value={undefined}>
                     {degrees.map(degree=> {
                         return <MenuItem key={degree} value={degree}>{degree}</MenuItem>
                     })}
@@ -92,7 +98,7 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
 
                 </Select>
             </div>
-            <ThinButton text='Next' />
+            <button type='submit'>Next</button>
         </form>
     </div>
   )
