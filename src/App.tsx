@@ -32,8 +32,9 @@ function App() {
                   <Route path="healthcareproviderinfoform" element={<HealthcareProviderForm handleSaveData={handleSaveData}/>} />
                   <Route path="contactinfoform" element={<ContactInformationForm/>} />
             </Route>
-            <Route path="collectioninfoform" element={<CollectionInfoForm />} />
+            <Route path="collectioninfoform" element={<CollectionInfoForm handleSaveData={handleSaveData}/>}/>
           </Route>
+        <Route path="dashboard"></Route>
         </Route>
       </Routes>
     </BrowserRouter>
