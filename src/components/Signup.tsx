@@ -66,7 +66,8 @@ function Signup() {
     zip_code: null,
     phone_number: null,
     phone_carrier: null,
-    volunteer_type: null,
+    is_student: null,
+    is_healthcare_provider: null,
     is_multilingual: null,
     language: null,
     other_languages: null,
@@ -94,9 +95,9 @@ function Signup() {
             ? <CreateUserPassForm handleSaveUserPass={handleSaveUserPass} /> 
             : signupData.first_name === null 
             ? <ProfileInformationForm handleSaveData={handleSaveUserPass} />
-            : signupData.volunteer_type === null
+            : signupData.is_student === null
             ? <VolunteerTypeForm handleSaveData={handleSaveUserPass}/> 
-            : signupData.volunteer_type === "General" 
+            : signupData.is_student === false && signupData.is_healthcare_provider === false
             ? <ContactInformationForm handleSaveData={handleSaveUserPass}/>
             : null
           }

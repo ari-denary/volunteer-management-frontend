@@ -26,7 +26,8 @@ interface VolunteerTypeProps {
 const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => {
     // COMPONENT STATE:
     const [formData, setFormData] = useState({
-        volunteer_type: ""
+        is_student: false,
+        is_healthcare_provider: false
     });
 
     console.log("CreateUserPassForm formData = ", formData);
@@ -37,7 +38,8 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
         console.log("VolunteerTypeForm handleSubmit called with formData = ", formData);
 
         handleSaveData({ 
-            volunteer_type: formData.volunteer_type,
+            is_student : formData.is_student,
+            is_healthcare_provider : formData.is_healthcare_provider
         });
     }
 
@@ -49,7 +51,10 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
                     <Button 
                         type="submit"
                         variant="contained" 
-                        onClick={() => setFormData({volunteer_type: "Student"})}
+                        onClick={() => setFormData({
+                            is_student: true, 
+                            is_healthcare_provider: false
+                        })}
                     > 
                         Student
                     </Button>
@@ -58,7 +63,10 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
                     <Button 
                         type="submit"
                         variant="contained" 
-                        onClick={() => setFormData({volunteer_type: "Healthcare Provider"})}
+                        onClick={() => setFormData({ 
+                            is_healthcare_provider: true,
+                            is_student: false, 
+                        })}
                     > 
                         Healthcare Provider
                     </Button>
@@ -67,7 +75,10 @@ const VolunteerTypeForm: React.FC<VolunteerTypeProps> = ({ handleSaveData }) => 
                     <Button 
                         type="submit"
                         variant="contained" 
-                        onClick={() => setFormData({volunteer_type: "General"})}
+                        onClick={() => setFormData({
+                            is_healthcare_provider: false,
+                            is_student: false, 
+                        })}
                     > 
                         General
                     </Button>
