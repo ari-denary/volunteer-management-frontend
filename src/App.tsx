@@ -8,6 +8,7 @@ import HealthcareProviderForm from "./components/HealthcareProviderForm.tsx";
 import ContactInformationForm from "./components/ContactInformationForm.tsx";
 import VolunteerTypeForm from './components/VolunteerTypeForm.tsx';
 import CollectionInfoForm from './components/CollectionInfoForm.tsx';
+import ProfilePage from "./components/ProfilePage.tsx";
 
 
 
@@ -26,6 +27,9 @@ function App() {
             <Route path="volunteertype" element={<VolunteerTypeForm />} />
             <Route path="collectioninfoform" element={<CollectionInfoForm />} />
           </Route>
+        </Route>
+        <Route path="dashboard">
+          <Route path="profile" element={<ProfilePage />}/> 
         </Route>
       </Routes>
     </BrowserRouter>
