@@ -39,7 +39,8 @@ const CreateUserPassForm: React.FC<CreateUserPassFormProps> = ({ handleSaveUserP
 
   // HANDLE CHANGE FUNCTION:
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = evt.target;
+    const name = evt.target.id
+    const value = evt.target.value;
     setFormData((fData) => ({
       ...fData,
       [name]: value,
