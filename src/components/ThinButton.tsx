@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 interface props {
 	text: string;
 	onClick?: () => void;
+  type?: string;
+  form?: string;
 }
 
 const ThinButton = ({text}: props) => {
