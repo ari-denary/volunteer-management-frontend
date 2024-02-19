@@ -13,7 +13,10 @@ import ProfilePage from "./components/ProfilePage.tsx";
 
 
 function App() {
-
+  const handleSaveData = (formData: object) => {
+    // Implement your logic to save data
+    console.log('Saving data:', formData);
+  };
   return (
 
     <div className='container'>
@@ -24,9 +27,15 @@ function App() {
           <Route path="" element={<Signup />} />
           <Route path="profile">
             <Route path="" element={<ProfileInformationForm />} />
-            <Route path="volunteertype" element={<VolunteerTypeForm />} />
-            <Route path="collectioninfoform" element={<CollectionInfoForm />} />
+            <Route path="volunteertype">
+                  <Route path="" element={<VolunteerTypeForm handleSaveData={handleSaveData} />} />
+                  <Route path="studentinfoform" element={<StudentInformationForm/>} />
+                  <Route path="healthcareproviderinfoform" element={<HealthcareProviderForm handleSaveData={handleSaveData}/>} />
+                  <Route path="contactinfoform" element={<ContactInformationForm/>} />
+            </Route>
+            <Route path="collectioninfoform" element={<CollectionInfoForm handleSaveData={handleSaveData}/>}/>
           </Route>
+        <Route path="dashboard"></Route>
         </Route>
         <Route path="dashboard">
           <Route path="profile" element={<ProfilePage />}/> 
@@ -34,10 +43,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   </div>
-
-
-
-
   )
 }
 
