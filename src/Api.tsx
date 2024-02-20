@@ -8,18 +8,17 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  */
 
 class VolunteerManagementApi {
-  // Token for interacting with the API will be stored here
-  static token = null;
 
   /** Request function that bundles actions needed for all requests */
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
+    const token = localStorage.getItem('token') || null;
 
     
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { 
-      "Authorization": `Bearer ${VolunteerManagementApi.token}`,
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     };
     
@@ -86,8 +85,8 @@ class VolunteerManagementApi {
       "POST"
     );
 
-    if (res.status === 200) {
-      VolunteerManagementApi.token = res.token;
+    if (res.ok) {
+      localStorage.setItem('token', res.token);
       return res.token;
     } else {
       return res.errors;
@@ -112,7 +111,7 @@ class VolunteerManagementApi {
     );
 
     if (res.status === 200) {
-      VolunteerManagementApi.token = res.token;
+      localStorage.setItem('token', res.token);
       return res.token;
     } else {
       return res.errors;
@@ -120,6 +119,8 @@ class VolunteerManagementApi {
   }
 
   // User API routes
+
+  /** Get a user */
 
   static async getUser(user_id) {
     const res = await this.request(`users/${user_id}`);
@@ -130,8 +131,93 @@ class VolunteerManagementApi {
     }
   }
 
+  /** Get a user's experiences */
+
+  static async getUserExperiences(user_id) {
+    const res = await this.request(`users/${user_id}/experiences`);
+    if (res.status === 200) {
+      return res.user_experiences;
+    } else {
+      return res.errors;
+    }
+  }
+
+  /** Get a user's languages spoken */
+
+  static async getUserLanguages(user_id) {
+    const res = await this.request(`users/${user_id}/languages`);
+    if (res.status === 200) {
+      return res.user_languages;
+    } else {
+      return res.errors;
+    }
+  }
+
+  /** Get Race/Ethnicity Options for User */
+
+  static async getRaceEthnicityOptions() {
+    const res = await this.request(`users/race-ethnicity-options`);
+    if (res.status === 200) {
+      return res.race_ethnicity_options
+    } else {
+      return res.errors;
+    }
+  }
+
+  // Experience Routes
+
+  /** Create a new experience */
+
+  static async createExperience({
+    user_id,
+    date,
+    sign_in_time,
+    department,
+  }) {
+    const res = await this.request(
+      `experiences`, 
+      {
+        user_id,
+        date,
+        sign_in_time,
+        department    
+      },
+      "POST"
+    );
+
+    if (res.ok) {
+      return res.user_experience;
+    } else {
+      return res.errors;
+    }
+  }
+
+  /** Update an experience */
+
+  static async updateExperience({
+    experience_id,
+    department,
+    sign_out_time,
+  }) {
+    const res = await this.request(
+      `experiences/${experience_id}`, 
+      {
+        department,
+        sign_out_time,
+      },
+      "PATCH"
+    );
+
+    if (res.ok) {
+      return res.user_experience;
+    } else {
+      return res.errors;
+    }
+  }
 
   // Admin API routes
+
+  /** Get all users */
 
   static async getAllUsers() {
     const res = await this.request(`users`);
@@ -142,6 +228,17 @@ class VolunteerManagementApi {
     }
   }
 
+  /** Get all experiences */
+  static async getAllExperiences() {
+    const res = await this.request(`experiences`);
+    if (res.status === 200) {
+      return res.user_experiences;
+    } else {
+    return res.errors
+    }
+  }
+
 }
+
 
 export default VolunteerManagementApi;
