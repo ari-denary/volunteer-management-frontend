@@ -6,7 +6,7 @@ import ProfileInformationForm from './components/ProfileInformationForm.tsx';
 import StudentInformationForm from "./components/StudentInformationForm.tsx";
 import HealthcareProviderForm from "./components/HealthcareProviderForm.tsx";
 import ContactInformationForm from "./components/ContactInformationForm.tsx";
-import VolunteerTypeForm from './components/VolunteerTypeForm.tsx';
+import VolunteerTypeForm from './components/VolunteerTypeFormNew.tsx';
 import CollectionInfoForm from './components/CollectionInfoForm.tsx';
 
 
