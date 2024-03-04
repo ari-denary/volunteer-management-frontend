@@ -1,6 +1,7 @@
 import { SliderValueLabel } from '@mui/material';
 import Button from '@mui/material/Button';
 import { ChangeEvent, useState } from 'react';
+import { FormWrapper } from './FormWrapper';
 
 // INTERFACES (TYPESCRIPT):
 interface DashboardProps {
@@ -37,9 +38,9 @@ const Dashboard: React.FC<DashboardProps> = ({ handleSaveData }) => {
 
 
     return (
-        <>
+        <FormWrapper title='Dashboard'>
             <div>
-                <h3>Dashboard</h3>
+                
                 <h5>Total Hours</h5>
                 <form onSubmit={handleSubmit}>
                 <div>
@@ -61,7 +62,7 @@ const Dashboard: React.FC<DashboardProps> = ({ handleSaveData }) => {
                 </div>
                 </form>
             </div>
-        </>
+        </FormWrapper>
     )
 }
 

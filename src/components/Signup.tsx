@@ -2,16 +2,17 @@ import { useState } from "react";
 import CreateUserPassForm from "./CreateUserPassForm";
 import ProfileInformationForm from "./ProfileInformationForm";
 import ContactInformationForm from "./ContactInformationForm";
-import VolunteerTypeForm from "./VolunteerTypeForm";
+import VolunteerTypeForm from "./VolunteerTypeFormNew";
+import { FormWrapper } from "./FormWrapper";
 
 
 /** Signup -------------------------------------------------------
  *
  * State:
- * - signupData: 
+ * - signupData:
  *   {
  * 	   "username": "TestUser",
- *     "password": "password", 
+ *     "password": "password",
  *     "badge_number": 1,
  *     "email": "sample@email.com",
  *     "school_email": "sample@email.com",
@@ -33,11 +34,11 @@ import VolunteerTypeForm from "./VolunteerTypeForm";
  *
  * Props:
  * - None
- * 
+ *
  * Functions defined
- * - handleSaveUserPass: function passed to CreateUserPassForm 
+ * - handleSaveUserPass: function passed to CreateUserPassForm
  * - handleSaveProfile: function passed to ProfileInformationForm
- * 
+ *
  * Routed at:
  *   /signup
  *
@@ -73,36 +74,18 @@ function Signup() {
     other_languages: null,
   });
 
-  // FUNCTION DEFINITIONS FOR PROPS:
-  function handleSaveUserPass(formData: object) {
-    console.log("handleSaveUserPass called with formData = ", formData);
-    console.log("SIGN UP DATA", signupData)
-    setSignupData((signupData) => ({
-      ...signupData,
-      ...formData,
-    }));
-  }
+
 
   /**  CONDITIONAL RENDERING:
-   *   - If no username in state, render CreateUserPassForm to user 
+   *   - If no username in state, render CreateUserPassForm to user
    *     (shows create username and password form)
-   *   - 
+   *   -
   */
     return (
-        <>
-          {
-            signupData.username === null  
-            ? <CreateUserPassForm handleSaveUserPass={handleSaveUserPass} /> 
-            : signupData.first_name === null 
-            ? <ProfileInformationForm handleSaveData={handleSaveUserPass} />
-            : signupData.is_student === null
-            ? <VolunteerTypeForm handleSaveData={handleSaveUserPass}/> 
-            : signupData.is_student === false && signupData.is_healthcare_provider === false
-            ? <ContactInformationForm handleSaveData={handleSaveUserPass}/>
-            : null
-          }
+        <FormWrapper title="Creat an account" children={undefined}>
 
-        </>
+
+        </FormWrapper>
     )
 }
 
