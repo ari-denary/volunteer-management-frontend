@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { MenuItem, TextField, Button, Typography } from '@mui/material'
 //TYPESCRIPT INTERFACE
 interface VolunteerInfoProps {
     handleSaveData: (formData: object) => void;
@@ -75,23 +78,38 @@ const VolunteerTypeForm: React.FC<VolunteerInfoProps> = ({ handleSaveData }) => 
     }
 
     return (
-        <>
-            <h1>What type of Volunteer are you?</h1>
-            <form onSubmit={handleSubmit}>
-                <div className='buttonContainer'>
-                    <button id="is_student" type="button" onClick={()=> handleChange('is_student')}>Student</button>
-                </div>
-                <div className='buttonContainer'>
-                    <button id="is_provider" type="button" onClick={()=> handleChange('is_provider')}>Healthcare Provider</button>
-                </div>
-                <div className='buttonContainer'>
-                    <button id="is_general" type="button" onClick={()=> handleChange('is_general')}>General</button>
-                </div>
+        <Container component='main' maxWidth="sm">
+        <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+            <Typography variant='h4' component="h2">What type of volunteer are you?</Typography>
+            <Box component='form' onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2} >
+           
+                <Grid item xs={12} className='buttonContainer'>
+                    <Button id="is_student" variant="contained" fullWidth type="button" onClick={()=> handleChange('is_student')}>Student</Button>
+                </Grid>
+                <Grid item xs={12} className='buttonContainer'>
+                    <Button id="is_provider" fullWidth
+                variant="contained"
+                type="button" onClick={()=> handleChange('is_provider')}>Healthcare Provider</Button>
+                </Grid>
+                <Grid item xs={12} className='buttonContainer'>
+                    <Button id="is_general" type="button" 
+                    fullWidth
+                    variant="contained"
+                    onClick={()=> handleChange('is_general')}>General</Button>
+                </Grid>
 
-            </form>
-            
-
-        </>
+            </Grid>
+            </Box>
+            </Box>
+        </Container>
     )
 }
 

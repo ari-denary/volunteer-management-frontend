@@ -1,15 +1,25 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import FolderIcon from '@mui/icons-material/Folder';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const ProfilePage = () => {
   return (
-    <div>
-        <div>
+<Container component='main' maxWidth="sm">
+        <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
             <img src="" alt="" />
             <span>Jackson HigginBottom</span>
             <span>He/Him</span>
-        </div>
+       
         <div>
             <Avatar variant="square">
                 <FolderIcon />
@@ -22,7 +32,8 @@ const ProfilePage = () => {
             </Avatar>
             <div>Contact Information</div>
         </div>
-    </div>
+    </Box>
+    </Container>
   )
 }
 

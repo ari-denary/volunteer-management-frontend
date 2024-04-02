@@ -1,8 +1,10 @@
-import { MenuItem, TextField } from '@mui/material';
-import ThinButton from './ThinButton';
+import { MenuItem, TextField, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 
 
@@ -31,14 +33,15 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
 
 
 
-    const handleSelectChange = (evt: SelectChangeEvent<typeof formData>) => {
-        const name = evt.target.name
+    // HANDLE CHANGE FUNCTION:
+    function handleChange(evt: React.ChangeEvent<HTMLInputElement> ) {
+        const name = evt.target.id
         const value = evt.target.value;
         setFormData((fData) => ({
-            ...fData,
-            [name]: value,
-          }));
-      };
+          ...fData,
+          [name]: value,
+        }));
+      }
 
       console.log("HealthcareProviderForm formData = ", formData);
 
@@ -60,23 +63,45 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
       }
 
   return (
-    <div>
-        <h1>Healthcare Provider Information</h1>
-        <form onSubmit={handleSubmit}>
-            <div>
+    <Container component='main' maxWidth="sm">
+    <Box
+        sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }}
+    >
+    <Typography variant='h3'>Healthcare Provider Information</Typography>
+    <Box component='form' onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2} >
+                <Grid item xs={12}>
                 <label htmlFor='typeOfProvider'>Type of Provider</label>
-                <Select name="type_of_provider" fullWidth id="typeOfProvider" placeholder='Physician, Nurse, etc' label='Physician, Nurse, etc' onChange={handleSelectChange} value={undefined}>
+                <TextField 
+                name="type_of_provider" 
+                fullWidth 
+                id="typeOfProvider" 
+                placeholder='Physician, Nurse, etc' label='Physician, Nurse, etc' 
+                onChange={handleChange} 
+                value={undefined}>
 
                     {providers.map(provider=>{
                         return(
                             <MenuItem key={provider} value={provider}>{provider}</MenuItem>
                         )
                     })}
-     </Select>
-            </div>
-            <div>
+                </TextField>
+                </Grid>
+            <Grid item xs={12}>
                 <label>Employer</label>
-                <Select name="employer" fullWidth  id="employer" placeholder='Employer' label='Employer' onChange={handleSelectChange} value={undefined}>
+                <TextField 
+                    select 
+                    name="employer" 
+                    fullWidth  
+                    id="employer" 
+                    placeholder='Employer' 
+                    label='Employer' onChange={handleChange}
+                    value={undefined}>
                     {employer.map(e => {
                         return (
                         <MenuItem key={e} value={e}>{e}</MenuItem>)
@@ -85,22 +110,31 @@ const HealthcareProviderForm: React.FC<CreateProviderInformationProps> = ({handl
 
 
 
-                </Select>
-            </div>
-            <div>
+                </TextField>
+            </Grid>
+            <Grid item xs={12}>
                 <label>Degree</label>
-                <Select name="degree" fullWidth id="Degree" placeholder='Degree (BS, BA, MD, DO, MPH, etc)' label='Degree (BS, BA, MD, DO, MPH, etc)' onChange={handleSelectChange} value={undefined}>
+                <TextField name="degree" fullWidth id="Degree" placeholder='Degree (BS, BA, MD, DO, MPH, etc)' label='Degree (BS, BA, MD, DO, MPH, etc)' onChange={handleChange} value={undefined}>
                     {degrees.map(degree=> {
                         return <MenuItem key={degree} value={degree}>{degree}</MenuItem>
                     })}
 
 
 
-                </Select>
-            </div>
-            <button type='submit'>Next</button>
-        </form>
-    </div>
+                </TextField>
+            </Grid>
+            <Grid item xs={12}>
+                    <Button type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    > Next
+                    </Button>
+                </Grid>
+            </Grid>
+            </Box>
+        </Box>
+    </Container>
   )
 }
 

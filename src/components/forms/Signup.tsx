@@ -2,7 +2,7 @@ import { useState } from "react";
 import CreateUserPassForm from "./CreateUserPassForm";
 import ProfileInformationForm from "./ProfileInformationForm";
 import ContactInformationForm from "./ContactInformationForm";
-import VolunteerTypeForm from "./VolunteerTypeForm";
+import VolunteerTypeForm from './VolunteerTypeFormNew.tsx';
 
 
 /** Signup -------------------------------------------------------

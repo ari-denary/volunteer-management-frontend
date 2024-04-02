@@ -1,14 +1,14 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import './App.css';
-import Login from './components/Login.tsx';
-import Signup from './components/Signup.tsx';
-import ProfileInformationForm from './components/ProfileInformationForm.tsx';
-import StudentInformationForm from "./components/StudentInformationForm.tsx";
-import HealthcareProviderForm from "./components/HealthcareProviderForm.tsx";
-import ContactInformationForm from "./components/ContactInformationForm.tsx";
-import VolunteerTypeForm from './components/VolunteerTypeForm.tsx';
-import CollectionInfoForm from './components/CollectionInfoForm.tsx';
-import ProfilePage from "./components/ProfilePage.tsx";
+import Login from './components/forms/Login.tsx';
+import Signup from './components/forms/Signup.tsx';
+import ProfileInformationForm from './components/forms/ProfileInformationForm.tsx';
+import StudentInformationForm from "./components/forms/StudentInformationForm.tsx";
+import HealthcareProviderForm from "./components/forms/HealthcareProviderForm.tsx";
+import ContactInformationForm from "./components/forms/ContactInformationForm.tsx";
+import VolunteerTypeForm from './components/forms/VolunteerTypeFormNew.tsx';
+import CollectionInfoForm from './components/forms/CollectionInfoForm.tsx';
+import ProfilePage from "./components/dashboard/ProfilePage.tsx";
 
 
 
@@ -26,12 +26,12 @@ function App() {
         <Route path="signup">
           <Route path="" element={<Signup />} />
           <Route path="profile">
-            <Route path="" element={<ProfileInformationForm />} />
+            <Route path="" element={<ProfileInformationForm handleSaveData={handleSaveData}/>} />
             <Route path="volunteertype">
                   <Route path="" element={<VolunteerTypeForm handleSaveData={handleSaveData} />} />
-                  <Route path="studentinfoform" element={<StudentInformationForm/>} />
+                  <Route path="studentinfoform" element={<StudentInformationForm handleSaveData={handleSaveData} />} />
                   <Route path="healthcareproviderinfoform" element={<HealthcareProviderForm handleSaveData={handleSaveData}/>} />
-                  <Route path="contactinfoform" element={<ContactInformationForm/>} />
+                  <Route path="contactinfoform" element={<ContactInformationForm handleSaveData={handleSaveData}/>} />
             </Route>
             <Route path="collectioninfoform" element={<CollectionInfoForm handleSaveData={handleSaveData}/>}/>
           </Route>

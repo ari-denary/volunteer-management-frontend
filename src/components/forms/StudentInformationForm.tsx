@@ -1,9 +1,10 @@
-import ThinButton from './ThinButton';
 import Button from '@mui/material/Button'
-import { MenuItem, TextField } from '@mui/material';
+import { MenuItem, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 //TYPESCRIPT INTERFACE
 interface StudentInfoProps {
@@ -54,14 +55,14 @@ const StudentInformationForm: React.FC<StudentInfoProps> = ({ handleSaveData }) 
 
     })
 
-    const handleSelectChange = (evt: SelectChangeEvent<typeof formData>) => {
-        const name = evt.target.name
+    function handleChange(evt: React.ChangeEvent<HTMLInputElement> ) {
+        const name = evt.target.id
         const value = evt.target.value;
         setFormData((fData) => ({
-            ...fData,
-            [name]: value,
+          ...fData,
+          [name]: value,
         }));
-    };
+      }
 
     console.log("HealthcareProviderForm formData = ", formData);
 
@@ -71,7 +72,6 @@ const StudentInformationForm: React.FC<StudentInfoProps> = ({ handleSaveData }) 
         console.log("studentinfoform handleSubmit called with formData = ''", formData);
 
         handleSaveData({
-
             type_of_student: formData.type_of_student,
             school: formData.school,
             degree: formData.degree,
@@ -86,12 +86,25 @@ const StudentInformationForm: React.FC<StudentInfoProps> = ({ handleSaveData }) 
     }
 
     return (
-        <div>
-            <h1>Student Information</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor='typeOfStudent'>Type of Student:</label>
-                    <Select fullWidth id="type_of_student" placeholder='Undergrad, grad, med, etc' label='Type of Student' value={undefined} onChange={handleSelectChange}>
+        <Container component='main' maxWidth="sm">
+        <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+            <Typography variant='h4' component="h2">Student Information</Typography>
+            <Box component='form' onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2} >
+                <Grid item xs={12}>
+
+                    {/* <label htmlFor='typeOfStudent'>Type of Student:</label> */}
+                    <TextField select 
+                    fullWidth id="type_of_student" placeholder='Undergrad, grad, med, etc' 
+                    label='Type of Student' 
+                    onChange={handleChange}>
 
                         {type_of_student.map(type => {
                             return (
@@ -99,59 +112,74 @@ const StudentInformationForm: React.FC<StudentInfoProps> = ({ handleSaveData }) 
 
 
                         })}
-                    </Select>
-                </div>
-                <div>
+                    </TextField>
+                    
+                </Grid>
+                
+                <Grid item xs={12}>
                     <label>School Name:</label>
-                    <TextField fullWidth type="text" id="schoolName" placeholder='School Name' label='School Name'>
+                    <TextField fullWidth type="text" id="schoolName" label='School Name'
+                    onChange={handleChange}>
                     </TextField>
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={12}>
                     <label>Degree:</label>
-                    <TextField fullWidth select id="degree" placeholder='Degree' label='Degree'>
+                    <TextField fullWidth select id="degree" label='Degree'
+                    onChange={handleChange}>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                     </TextField>
-                </div>
-                <div>
+                </Grid>
+                <Grid item>
                     <label>Anticipated Graduation:</label>
-                    <TextField select id="month" placeholder='Month' label='Month'>
-
-                    </TextField>
-                    <TextField id="year" placeholder='Year' label='Year'>
-                        <MenuItem>-</MenuItem>
-                        <MenuItem>-</MenuItem>
-                        <MenuItem>-</MenuItem>
-                    </TextField>
-                </div>
-                <div>
+                    <TextField type="date" id="month" label='Month' 
+                    onChange={handleChange}/>
+                </Grid>
+                <Grid item xs={12}>
                     <label>Major:</label>
-                    <TextField fullWidth select id="major" placeholder='Major' label='Major'>
+                    <TextField fullWidth select id="major" label='Major'
+                    onChange={handleChange}>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                     </TextField>
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={12}>
                     <label>Minor:</label>
-                    <TextField fullWidth select id="minor" placeholder='Minor' label='Minor'>
+                    <TextField 
+                    fullWidth 
+                    select 
+                    id="minor" label='Minor'
+                    onChange={handleChange}>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                     </TextField>
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={12}>
                     <label>Classification:</label>
-                    <TextField fullWidth select id="classification" placeholder='Classification' label='Classification'>
+                    <TextField 
+                    fullWidth 
+                    select id="classification" label='Classification'
+                    onChange={handleChange}>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                         <MenuItem>-</MenuItem>
                     </TextField>
-                </div>
-                <Button type="submit">Next</Button>
-            </form>
-        </div>
+                </Grid>
+                <Grid item xs={12}>
+                    <Button type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    > Next
+                    </Button>
+                </Grid>
+                </Grid>
+            </Box>
+        </Box>
+        </Container>
     )
 }
 
