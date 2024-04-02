@@ -28,13 +28,13 @@ function VolunteerTypeForm({
 
     switch (volunteerType) {
         case 'is_student':
-          navigate('/signup/studentinfoform');
+          navigate('/studentinfoform');
           break;
         case 'is_provider':
-          navigate('/signup/healthcareproviderinfoform');
+          navigate('/healthcareproviderinfoform');
           break;
         case 'is_general':
-          navigate('/signup/contactinfoform');
+          navigate('/contactinfoform');
           break;
         default:
           break;
@@ -44,7 +44,7 @@ function VolunteerTypeForm({
 
   return (
     <FormWrapper title='What type of Volunteer are you?'>
-      <form>
+      <div>
         <div className='buttonContainer'>
           <button
             id='is_student'
@@ -72,7 +72,7 @@ function VolunteerTypeForm({
             General
           </button>
         </div>
-      </form>
+      </div>
     </FormWrapper>
   );
 }

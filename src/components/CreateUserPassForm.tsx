@@ -20,7 +20,7 @@ function CreateUserPassForm({
   return (
     <FormWrapper title="Create an account">
       <div>
-        <form>
+        <div>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               Username
@@ -62,10 +62,8 @@ function CreateUserPassForm({
               }
             />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Next
-          </button>
-        </form>
+          
+        </div>
       </div>
     </FormWrapper>
   );

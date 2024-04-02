@@ -35,7 +35,7 @@ function ProfileInformationForm({ first_name,
 }: CreateProfileInformationProps) {
   return (
     <FormWrapper title="Profile Information">
-      <form>
+      <div>
         <div>
           <label>Name:</label>
           <TextField
@@ -163,7 +163,7 @@ function ProfileInformationForm({ first_name,
           ></TextField>
         </div>
         <button className="btn btn-primary" type="submit" />
-      </form>
+      </div>
     </FormWrapper>
   );
 }

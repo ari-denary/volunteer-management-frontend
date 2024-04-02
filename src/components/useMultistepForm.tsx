@@ -24,6 +24,7 @@ export function useMultistepForm(steps: ReactElement[]) {
   function getCurrentRoute() {
     return steps[currentStepIndex];
   }
+  
 
   return {
     currentStepIndex,

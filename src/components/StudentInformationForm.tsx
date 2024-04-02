@@ -7,6 +7,17 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormWrapper } from "./FormWrapper";
 
 
+type formData = {
+  type_of_student:
+  school,
+  degree,
+  anticipated_graduation,
+  major,
+  minor,
+  classification,
+}
+
+
 
 type CreateStudentInfoProps = formData & {
   updateFields: (fields: Partial<any>) => void;
@@ -148,6 +159,7 @@ function StudentInformationForm({
             <MenuItem value="junior">junior</MenuItem>
             <MenuItem value="etc.">etc.</MenuItem>
           </Select>
+          <button>Next</button>
         </div>
       </form>
     </FormWrapper>
