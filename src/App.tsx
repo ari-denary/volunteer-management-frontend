@@ -41,11 +41,13 @@ function App() {
             throw new Error("Function not implemented.");
           } } />} />
         <Route path="/signup" element={<Signup />} />
-         <Route path="/studentinfoform" element={<StudentInformationForm /> } />
+         {/* <Route path="/studentinfoform" element={<StudentInformationForm type_of_student={undefined} degree={undefined} anticipated_graduation={undefined} major={undefined} minor={undefined} classification={undefined} updateFields={function (fields: Partial<any>): void {
+            throw new Error("Function not implemented.");
+          } } /> } />
          <Route path="/healthcareproviderinfoform" element={<HealthcareProviderForm /> } />
          <Route path="/contactinfoform" element={<ContactInformationForm email={""} school_email={""} address={""} city={""} state={""} zip_code={""} phone_number={""} phone_carrier={""} updateFields={function (fields: Partial<{ email: string; school_email: string; address: string; city: string; state: string; zip_code: string; phone_number: string; phone_carrier: string; }>): void {
             throw new Error("Function not implemented.");
-          } } /> } />
+          } } /> } /> */}
 
 
 

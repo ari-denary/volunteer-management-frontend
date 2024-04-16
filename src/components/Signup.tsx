@@ -113,6 +113,7 @@ function Signup(): JSX.Element {
     const [data, setData] = useState(INITIAL_DATA);
     const [isProvider, setIsProvider] = useState(false);
 
+
       useEffect(() => {
       // Logic to determine if the user is a provider
       setIsProvider(data.is_healthcare_provider); // Assuming data.is_provider holds the provider status
@@ -135,13 +136,14 @@ function Signup(): JSX.Element {
       // <Login {...data} updateFields={updateFields} />,
       <CreateUserPassForm {...data} updateFields={updateFields} />,
       <ProfileInformationForm {...data} updateFields={updateFields} />,
-      <VolunteerTypeForm is_provider={false} is_general={false} {...data} updateFields={updateFields}/>,
-      // <StudentInformationForm {...data} updateFields={updateFields} />,
-      // <HealthcareProviderForm {...data} updateFields={updateFields} />,
+      <VolunteerTypeForm is_student={false} is_healthcare_provider={false} is_general={false} {...data} updateFields={updateFields}/>,
+
+      <StudentInformationForm  type_of_student={undefined} degree={undefined} anticipated_graduation={undefined} major={undefined} minor={undefined} classification={undefined} {...data} updateFields={updateFields} />,
+      <HealthcareProviderForm {...data} updateFields={updateFields} />,
       <ContactInformationForm {...data} updateFields={updateFields} />,
       <CollectionInfoForm {...data} updateFields={updateFields} />,
       // <Dashboard {...data}  updateFields={updateFields} />,
-    ]);
+    ], data.is_student, data.is_healthcare_provider);
 
   return (
     <div>

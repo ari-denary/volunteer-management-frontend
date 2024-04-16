@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 type VolunteerInfoProps = {
   is_student: boolean;
-  is_provider: boolean;
+  is_healthcare_provider: boolean;
   is_general: boolean;
   updateFields: (fields: Partial<VolunteerInfoProps>) => void;
 };
 
 function VolunteerTypeForm({
   is_student,
-  is_provider,
+  is_healthcare_provider,
   is_general,
   updateFields,
 }: VolunteerInfoProps) {
@@ -21,24 +21,24 @@ function VolunteerTypeForm({
   const handleClick = (volunteerType: keyof VolunteerInfoProps) => {
     updateFields({
       is_student: false,
-      is_provider: false,
+      is_healthcare_provider: false,
       is_general: false,
       [volunteerType]: true,
     });
 
-    switch (volunteerType) {
-        case 'is_student':
-          navigate('/studentinfoform');
-          break;
-        case 'is_provider':
-          navigate('/healthcareproviderinfoform');
-          break;
-        case 'is_general':
-          navigate('/contactinfoform');
-          break;
-        default:
-          break;
-      }
+    // switch (volunteerType) {
+    //     case 'is_student':
+    //       navigate('/studentinfoform');
+    //       break;
+    //     case 'is_provider':
+    //       navigate('/healthcareproviderinfoform');
+    //       break;
+    //     case 'is_general':
+    //       navigate('/contactinfoform');
+    //       break;
+    //     default:
+    //       break;
+    //   }
 
   };
 
@@ -58,7 +58,7 @@ function VolunteerTypeForm({
           <button
             id='is_provider'
             type='button'
-            onClick={() => handleClick('is_provider')}
+            onClick={() => handleClick('is_healthcare_provider')}
           >
             Healthcare Provider
           </button>

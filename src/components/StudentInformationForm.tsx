@@ -35,7 +35,7 @@ function StudentInformationForm({
 }: CreateStudentInfoProps) {
   return (
     <FormWrapper title="Student Information">
-      <form>
+
         <div>
           <label htmlFor="typeOfStudent">Type of Student:</label>
           <Select
@@ -161,7 +161,7 @@ function StudentInformationForm({
           </Select>
           <button>Next</button>
         </div>
-      </form>
+      
     </FormWrapper>
   );
 }
