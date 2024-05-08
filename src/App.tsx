@@ -1,14 +1,14 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import './App.css';
-import Login from './components/forms/Login.tsx';
-import Signup from './components/forms/Signup.tsx';
-import ProfileInformationForm from './components/forms/ProfileInformationForm.tsx';
-import StudentInformationForm from "./components/forms/StudentInformationForm.tsx";
-import HealthcareProviderForm from "./components/forms/HealthcareProviderForm.tsx";
-import ContactInformationForm from "./components/forms/ContactInformationForm.tsx";
-import VolunteerTypeForm from './components/forms/VolunteerTypeFormNew.tsx';
-import CollectionInfoForm from './components/forms/CollectionInfoForm.tsx';
-import ProfilePage from "./components/dashboard/ProfilePage.tsx";
+import Login from './components/Login.tsx';
+import Signup from './components/Signup.tsx';
+import ProfileInformationForm from './components/ProfileInformationForm.tsx';
+import StudentInformationForm from "./components/StudentInformationForm.tsx";
+import HealthcareProviderForm from "./components/HealthcareProviderForm.tsx";
+import ContactInformationForm from "./components/ContactInformationForm.tsx";
+import VolunteerTypeForm from './components/VolunteerTypeFormNew.tsx';
+import CollectionInfoForm from './components/CollectionInfoForm.tsx';
+import ProfilePage from "./components/ProfilePage.tsx";
 
 
 
