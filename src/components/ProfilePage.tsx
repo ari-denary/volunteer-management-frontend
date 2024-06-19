@@ -1,9 +1,7 @@
-import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import FolderIcon from '@mui/icons-material/Folder';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 
 const ProfilePage = () => {
   return (
