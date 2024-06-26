@@ -33,7 +33,7 @@ function CreateUserPassForm({
       >
         {/* <Typography variant='h4' component="h2">Create Username & Password </Typography> */}
         <Typography variant="body1">Create a username and password for your new account</Typography>
-        <Box component='form' sx={{ mt: 3 }}>
+        <Box sx={{ mt: 3 }}>
           <Grid container spacing={1} direction={"column"}>
             <Grid item xs={12}>
                 <TextField

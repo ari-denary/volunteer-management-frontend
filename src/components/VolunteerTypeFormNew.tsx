@@ -53,8 +53,7 @@ function VolunteerTypeForm({
               alignItems: 'center',
               justifyContent: 'center',
           }}>
-        <Box
->
+        <Box>
         <Stack spacing={2}>
           <Button variant="contained"
             id='is_student'

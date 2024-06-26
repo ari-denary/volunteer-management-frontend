@@ -46,7 +46,7 @@ function ContactInformationForm(
                         alignItems: 'center',
                     }}
                 >
-                    <Box component='form' >
+                    <Box>
                         <Grid container spacing={2} >
                             <Grid item xs={12}>
                                     <label>Email:</label>

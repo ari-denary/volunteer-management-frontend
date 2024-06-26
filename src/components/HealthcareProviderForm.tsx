@@ -35,7 +35,7 @@ updateFields}: CreateProvdierInfoProps) {
                     alignItems: 'center',
                 }}
             >
-                <Box component='form'>
+                <Box>
                 <Grid container spacing={1} direction={"column"}>
                     <Grid item xs={12}>
                         <label htmlFor='typeOfProvider'>Type of Provider</label>
