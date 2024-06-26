@@ -46,7 +46,7 @@ function ProfileInformationForm({ first_name,
               alignItems: 'center',
           }}
             >
-      <Box component='form'>
+      <Box>
         <Grid container spacing={2} >
           <Grid item xs={6} sm={6}>
             <label>First Name:</label>
