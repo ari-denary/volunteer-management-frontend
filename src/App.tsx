@@ -2,19 +2,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login.tsx";
 import Signup from "./components/Signup.tsx";
-import CreateUserPassForm from "./components/CreateUserPassForm.tsx";
-import ProfileInformationForm from "./components/ProfileInformationForm.tsx";
-import StudentInformationForm from "./components/StudentInformationForm.tsx";
-import HealthcareProviderForm from "./components/HealthcareProviderForm.tsx";
-import ContactInformationForm from "./components/ContactInformationForm.tsx";
-import VolunteerTypeForm from "./components/VolunteerTypeFormNew.tsx";
-import CollectionInfoForm from "./components/CollectionInfoForm.tsx";
-import Dashboard from "./components/Dashboard.tsx";
-import { useMultistepForm } from "./components/useMultistepForm.tsx";
-import { FormEvent, useState } from "react";
-import React, { useEffect } from "react";
-
-
 
 function App() {
 

@@ -12,7 +12,7 @@ export function FormWrapper({title, children}:
             <h2 style={{textAlign: "center", margin: 0, marginBottom: "2rem"}}>
                 {title}
             </h2>
-            <div style={{display: "grid", gap: "1rem .5rem", justifyContent: "flex-start", gridTemplateColumns: "auto"}}>{children}</div>
+            <div style={{display: "grid", gap: "1rem .5rem", justifyContent: "center", gridTemplateColumns: "auto"}}>{children}</div>
             </>
         )
 

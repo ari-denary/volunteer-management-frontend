@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { FormWrapper } from "./FormWrapper";
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { Button, TextField, Typography } from "@mui/material";
 
 type CreateUserData = {
   username: string;
@@ -19,52 +23,65 @@ function CreateUserPassForm({
 }: CreateUserPassForProps) {
   return (
     <FormWrapper title="Create an account">
-      <div>
-        <div>
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => updateFields({ username: e.target.value })}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => updateFields({ password: e.target.value })}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="confirmPassword" className="form-label">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="confirmPassword"
-              placeholder="Confirm your password"
-              value={confirmPassword}
-              onChange={(e) =>
-                updateFields({ confirmPassword: e.target.value })
-              }
-            />
-          </div>
-          
-        </div>
-      </div>
+      <Container component='main' maxWidth="sm">
+      <Box
+          sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+          }}
+      >
+        {/* <Typography variant='h4' component="h2">Create Username & Password </Typography> */}
+        <Typography variant="body1">Create a username and password for your new account</Typography>
+        <Box sx={{ mt: 3 }}>
+          <Grid container spacing={1} direction={"column"}>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    label="Username"
+                    onChange={e => updateFields({username: e.target.value})}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    label="Password"
+                    onChange={e => updateFields({password: e.target.value})}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <label
+                    htmlFor="confirmPassword"
+                    className="form-label"
+                ></label>
+                <TextField
+                    fullWidth
+                    type="password"
+                    className="form-control"
+                    id="confirmPassword"
+                    label="Confirm Password"
+                    onChange={e => updateFields({confirmPassword: e.target.value})}
+                />
+            </Grid>
+            {/* <Grid item xs={12}>
+              <Button type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Next
+              </Button>
+            </Grid> */}
+          </Grid>
+        </Box>
+       </Box>
+      </Container>
     </FormWrapper>
   );
 }

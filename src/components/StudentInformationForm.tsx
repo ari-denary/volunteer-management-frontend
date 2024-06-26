@@ -1,11 +1,13 @@
 import ThinButton from "./ThinButton";
-import Button from "@mui/material/Button";
-import { MenuItem, TextField } from "@mui/material";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormWrapper } from "./FormWrapper";
-
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { MenuItem, TextField, Typography, Button } from '@mui/material'
 
 type formData = {
   type_of_student:
@@ -35,10 +37,20 @@ function StudentInformationForm({
 }: CreateStudentInfoProps) {
   return (
     <FormWrapper title="Student Information">
-
-        <div>
+        <Container component='main' maxWidth="sm">
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+        <Box>
+        <Grid container spacing={2} >
+          <Grid item xs={12}>
           <label htmlFor="typeOfStudent">Type of Student:</label>
-          <Select
+          <TextField
+            select
             fullWidth
             id="type_of_student"
             placeholder="Undergrad, grad, med, etc"
@@ -49,9 +61,9 @@ function StudentInformationForm({
             <MenuItem value="undergraduate">Undergraduate</MenuItem>
             <MenuItem value="graduate">Graduate</MenuItem>
             <MenuItem value="medical">Medical</MenuItem>
-          </Select>
-        </div>
-        <div>
+          </TextField>
+        </Grid>
+        <Grid item xs={12}>
           <label>School Name:</label>
           <TextField
             fullWidth
@@ -62,10 +74,11 @@ function StudentInformationForm({
             value={school}
             onChange={(e) => updateFields({ school: e.target.value })}
           ></TextField>
-        </div>
-        <div>
+        </Grid>
+        <Grid item xs={12}>
           <label>Degree:</label>
-          <Select
+          <TextField
+            select
             fullWidth
             id="degree"
             placeholder="Degree"
@@ -83,11 +96,14 @@ function StudentInformationForm({
             <MenuItem value="3">3, Bachelors Degree</MenuItem>
             <MenuItem value="4">4, Masters Degree</MenuItem>
             <MenuItem value="5">5, Doctorate Degree</MenuItem>
-          </Select>
-        </div>
-        <div>
-          <label>Anticipated Graduation:</label>
+          </TextField>
+        </Grid>
+        
+          
+          <Grid item xs={6}>
+          <label>Graduation Month:</label>
           <TextField
+            fullWidth
             id="anticipated_graduation"
             placeholder="Month"
             label="Month"
@@ -97,8 +113,12 @@ function StudentInformationForm({
                 anticipated_graduation: e.target.value,
               });
             }}
-          ></TextField>
+          /> 
+          </Grid>
+          <Grid item xs={6}>
+          <label>Graduation Year:</label>
           <TextField
+            fullWidth
             id="year"
             placeholder="Year"
             label="Year"
@@ -107,9 +127,10 @@ function StudentInformationForm({
                 major: e.target.value,
               });
             }}
-          ></TextField>
-        </div>
-        <div>
+         />
+        
+        </Grid>
+        <Grid item xs={12}>
           <label>Major:</label>
           <TextField
             fullWidth
@@ -123,8 +144,8 @@ function StudentInformationForm({
               })
             }
           ></TextField>
-        </div>
-        <div>
+        </Grid>
+        <Grid item xs={12}>
           <label>Minor:</label>
           <TextField
             fullWidth
@@ -138,10 +159,11 @@ function StudentInformationForm({
               })
             }
           ></TextField>
-        </div>
-        <div>
+        </Grid>
+        <Grid item xs={12}>
           <label>Classification:</label>
-          <Select
+          <TextField
+            select
             fullWidth
             name="classification"
             id="classification"
@@ -158,10 +180,12 @@ function StudentInformationForm({
             <MenuItem value="sophomore">sophomore</MenuItem>
             <MenuItem value="junior">junior</MenuItem>
             <MenuItem value="etc.">etc.</MenuItem>
-          </Select>
-          <button>Next</button>
-        </div>
-      
+          </TextField>
+      </Grid>
+      </Grid>
+      </Box>
+      </Box>
+      </Container>
     </FormWrapper>
   );
 }

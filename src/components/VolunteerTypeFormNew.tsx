@@ -1,7 +1,10 @@
 import React from 'react';
 import { FormWrapper } from './FormWrapper';
 import { useNavigate } from 'react-router-dom';
-
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 type VolunteerInfoProps = {
   is_student: boolean;
   is_healthcare_provider: boolean;
@@ -43,36 +46,41 @@ function VolunteerTypeForm({
   };
 
   return (
-    <FormWrapper title='What type of Volunteer are you?'>
-      <div>
-        <div className='buttonContainer'>
-          <button
+    <FormWrapper title='What type of volunteer are you?'>
+      <Container component='main' maxWidth="sm" sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+          }}>
+        <Box>
+        <Stack spacing={2}>
+          <Button variant="contained"
             id='is_student'
             type='button'
             onClick={() => handleClick('is_student')}
           >
             Student
-          </button>
-        </div>
-        <div className='buttonContainer'>
-          <button
+          </Button>
+
+          <Button variant="contained"
             id='is_provider'
             type='button'
             onClick={() => handleClick('is_healthcare_provider')}
           >
             Healthcare Provider
-          </button>
-        </div>
-        <div className='buttonContainer'>
-          <button
+          </Button>
+
+          <Button variant="contained"
             id='is_general'
             type='button'
             onClick={() => handleClick('is_general')}
           >
             General
-          </button>
-        </div>
-      </div>
+          </Button>
+      </Stack>
+      </Box>
+      </Container>
     </FormWrapper>
   );
 }

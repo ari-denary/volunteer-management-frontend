@@ -1,7 +1,10 @@
-import { FormControl, InputLabel, MenuItem, TextField } from "@mui/material";
+import { FormControl, InputLabel,Button,  MenuItem, TextField } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useEffect, useRef, useState } from "react";
 import { FormWrapper } from "./FormWrapper";
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 type UserData = {
   first_name: string,
@@ -35,31 +38,48 @@ function ProfileInformationForm({ first_name,
 }: CreateProfileInformationProps) {
   return (
     <FormWrapper title="Profile Information">
-      <div>
-        <div>
-          <label>Name:</label>
-          <TextField
-            id="first_name"
-            placeholder="First Name"
-            size="small"
-            value={first_name}
-            onChange={(e) => updateFields({ first_name: e.target.value })}
-          />
-          <TextField
-            id="last_name"
-            placeholder="Last Name"
-            size="small"
-            value={last_name}
-            onChange={(e) =>
-              updateFields({
-                last_name: e.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
+      <Container component='main' maxWidth="sm">
+        <Box
+          sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+          }}
+            >
+      <Box>
+        <Grid container spacing={2} >
+          <Grid item xs={6} sm={6}>
+            <label>First Name:</label>
+            <TextField
+              id="first_name"
+              placeholder="First Name"
+              fullWidth
+              value={first_name}
+              label="First Name"
+              onChange={(e) => updateFields({ first_name: e.target.value })}
+            />
+          </Grid>
+          <Grid item xs={6} sm={6}>
+          <label>Last Name:</label>
+            <TextField
+              id="last_name"
+              placeholder="Last Name"
+              fullWidth
+              value={last_name}
+              label="Last Name"
+              onChange={(e) =>
+                updateFields({
+                  last_name: e.target.value,
+                })
+              }
+            />
+          </Grid>
+        
+        <Grid item xs={6} sm={6}>
           <label>Gender: </label>
-          <Select
+          <TextField
+          select
+          fullWidth
             name="gender"
             placeholder="Gender"
             label="Gender"
@@ -73,9 +93,13 @@ function ProfileInformationForm({ first_name,
             <MenuItem value="female">Female</MenuItem>
             <MenuItem value="male">Male</MenuItem>
             <MenuItem value="non-binary">Non-binary</MenuItem>
-          </Select>
-          <label>Pronouns: </label>
-          <Select
+          </TextField>
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <label>Pronouns:</label>
+          <TextField
+          select
+          fullWidth
             name="pronouns"
             placeholder="pronouns"
             label="Pronouns"
@@ -90,24 +114,27 @@ function ProfileInformationForm({ first_name,
             <MenuItem value="male">He/him/his</MenuItem>
             <MenuItem value="non-binary">Ze/Zir/Zem</MenuItem>
             <MenuItem>They/them/their</MenuItem>
-          </Select>
-        </div>
-        <div>
+          </TextField>
+        </Grid>
+        <Grid item xs={12}>
           <label>Date of Birth: </label>
-          <input
-
+          <TextField
+            fullWidth
             id="dob"
+            type="date"
             value={dob}
             onChange={(e) =>
               updateFields({
                 dob: e.target.value,
               })
             }
-          ></input>
-        </div>
+          ></TextField>
+        </Grid>
+        <Grid item xs={12}>
         <label>Are you Hispanic or Latino?</label>
-        <Select
+        <TextField
           fullWidth
+          select
           name="race"
           placeholder="Race"
           label="Race"
@@ -120,11 +147,12 @@ function ProfileInformationForm({ first_name,
         >
           <MenuItem value="yes">Yes</MenuItem>
           <MenuItem value="no">No</MenuItem>
-        </Select>
+        </TextField>
 
         {race === "no" && (/* Conditionally render TextField for ethnicity */
 
           <TextField
+            sx={{mt:2}}
             fullWidth
             select
             id="ethnicity"
@@ -141,18 +169,30 @@ function ProfileInformationForm({ first_name,
             <MenuItem value="white">White.</MenuItem>
           </TextField>
         )}
-        <div>
+
+        </Grid>
+        
+        <Grid item xs={12}>
           <label>Language:</label>
           <TextField
             fullWidth
+            select
             id="language"
             placeholder="Primary Language"
             label="Primary Language"
             value={language}
             onChange={(e) => updateFields({ language: e.target.value })}
-          ></TextField>
+          >
+
+            <MenuItem>-</MenuItem>
+            <MenuItem>-</MenuItem>
+            <MenuItem>-</MenuItem>
+          </TextField>
+        </Grid>
+        <Grid item xs={12}>
           <TextField
             fullWidth
+            select
             id="additionalLanguage"
             placeholder="Additional Language"
             label="Additional Language"
@@ -160,10 +200,18 @@ function ProfileInformationForm({ first_name,
             onChange={(e) =>
               updateFields({ other_languages: e.target.value })
             }
-          ></TextField>
-        </div>
-        <button className="btn btn-primary" type="submit" />
-      </div>
+          >
+            <MenuItem>-</MenuItem>
+            <MenuItem>-</MenuItem>
+            <MenuItem>-</MenuItem>
+
+          </TextField>
+        </Grid>
+        </Grid>
+        
+      </Box>
+      </Box>
+    </Container>
     </FormWrapper>
   );
 }
